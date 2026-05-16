@@ -1,0 +1,2250 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Булочки ранней пташки — Кафе, кондитерская, пекарня в Калининграде</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FFF8F0;
+            --warm-white: #FFFDF9;
+            --golden: #C8956C;
+            --golden-light: #E8C4A0;
+            --golden-dark: #A07040;
+            --brown: #5C3A1E;
+            --brown-light: #8B6340;
+            --brown-dark: #3A2210;
+            --sage: #7A8B6F;
+            --sage-light: #A8B89E;
+            --sage-dark: #5A6B4F;
+            --rose: #D4A0A0;
+            --rose-light: #F0D0D0;
+            --text-primary: #2C1810;
+            --text-secondary: #6B5B50;
+            --text-light: #9B8B80;
+            --bg-cream: #FFF8F0;
+            --bg-warm: #FEF3E8;
+            --bg-section: #F9EDE0;
+            --shadow-sm: 0 2px 8px rgba(92, 58, 30, 0.08);
+            --shadow-md: 0 4px 20px rgba(92, 58, 30, 0.12);
+            --shadow-lg: 0 8px 40px rgba(92, 58, 30, 0.16);
+            --shadow-xl: 0 16px 60px rgba(92, 58, 30, 0.2);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 248, 240, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 2px 20px rgba(92, 58, 30, 0.1);
+            padding: 0.6rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--brown-dark);
+        }
+
+        .nav-logo svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--golden);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--golden-dark);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-phone {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--brown-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            border: 1.5px solid var(--golden-light);
+            transition: all 0.3s;
+        }
+
+        .nav-phone:hover {
+            background: var(--golden);
+            color: white;
+            border-color: var(--golden);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .nav-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--brown-dark);
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #FFF8F0 0%, #FEF3E8 30%, #F9EDE0 60%, #F0E0CC 100%);
+        }
+
+        .hero-bg-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%235C3A1E' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-decor {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+        }
+
+        .hero-decor-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--golden-light);
+            top: -100px;
+            right: -100px;
+        }
+
+        .hero-decor-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--sage-light);
+            bottom: -50px;
+            left: -100px;
+            opacity: 0.2;
+        }
+
+        .hero-decor-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--rose-light);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.15;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(200, 149, 108, 0.15);
+            border: 1px solid rgba(200, 149, 108, 0.3);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--golden-dark);
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .hero-badge svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            color: var(--brown-dark);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-title span {
+            color: var(--golden);
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero-rating {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease-out 0.5s both;
+        }
+
+        .hero-rating-stars {
+            display: flex;
+            gap: 3px;
+        }
+
+        .hero-rating-stars svg {
+            width: 20px;
+            height: 20px;
+            fill: #F5B731;
+        }
+
+        .hero-rating-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .hero-rating-text strong {
+            color: var(--brown-dark);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--golden);
+            color: white;
+            box-shadow: 0 4px 15px rgba(200, 149, 108, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--golden-dark);
+            box-shadow: 0 6px 25px rgba(200, 149, 108, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--brown-dark);
+            border: 1.5px solid var(--brown-light);
+        }
+
+        .btn-secondary:hover {
+            background: var(--brown-dark);
+            color: white;
+            border-color: var(--brown-dark);
+            transform: translateY(-2px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+        }
+
+        .hero-scroll svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--text-light);
+        }
+
+        /* ===== FEATURES ===== */
+        .features {
+            padding: 4rem 2rem;
+            background: var(--warm-white);
+        }
+
+        .features-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: var(--bg-section);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--golden-dark);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .feature-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--brown-dark);
+        }
+
+        .feature-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            padding: 6rem 2rem;
+            background: var(--cream);
+        }
+
+        .about-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-images {
+            position: relative;
+            height: 500px;
+        }
+
+        .about-img {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: absolute;
+        }
+
+        .about-img-1 {
+            width: 65%;
+            height: 70%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, #E8C4A0 0%, #D4A070 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-img-2 {
+            width: 55%;
+            height: 60%;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(135deg, #A8B89E 0%, #7A8B6F 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid var(--cream);
+        }
+
+        .about-img svg {
+            width: 60px;
+            height: 60px;
+            opacity: 0.5;
+        }
+
+        .about-img svg path, .about-img svg circle, .about-img svg rect, .about-img svg ellipse {
+            fill: white;
+        }
+
+        .about-badge-float {
+            position: absolute;
+            bottom: 30%;
+            left: 55%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            z-index: 3;
+        }
+
+        .about-badge-float svg {
+            width: 24px;
+            height: 24px;
+            fill: #F5B731;
+        }
+
+        .about-badge-float-text {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .about-badge-float-text strong {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--brown-dark);
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--golden-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background: var(--golden);
+        }
+
+        .about-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--brown-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .about-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .about-detail-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: var(--bg-section);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .about-detail-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--golden-dark);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .about-detail-text {
+            font-size: 0.85rem;
+        }
+
+        .about-detail-text strong {
+            display: block;
+            color: var(--brown-dark);
+            font-size: 0.9rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .about-detail-text span {
+            color: var(--text-secondary);
+        }
+
+        /* ===== MENU ===== */
+        .menu {
+            padding: 6rem 2rem;
+            background: var(--bg-warm);
+        }
+
+        .menu-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .menu-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--brown-dark);
+            margin-bottom: 1rem;
+        }
+
+        .menu-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .menu-cat-btn {
+            padding: 0.6rem 1.5rem;
+            border: 1.5px solid var(--golden-light);
+            border-radius: 50px;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .menu-cat-btn.active, .menu-cat-btn:hover {
+            background: var(--golden);
+            color: white;
+            border-color: var(--golden);
+        }
+
+        .menu-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1.25rem;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        .menu-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+
+        .menu-card-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .menu-card-img.bread { background: linear-gradient(135deg, #F5DEB3, #DEB887); }
+        .menu-card-img.croissant { background: linear-gradient(135deg, #F0C880, #E0A850); }
+        .menu-card-img.coffee { background: linear-gradient(135deg, #8B6340, #A07040); }
+        .menu-card-img.dessert { background: linear-gradient(135deg, #F0D0D0, #E8B0B0); }
+        .menu-card-img.breakfast { background: linear-gradient(135deg, #F5E6C8, #E8D4A8); }
+        .menu-card-img.salad { background: linear-gradient(135deg, #A8B89E, #8BA080); }
+        .menu-card-img.tea { background: linear-gradient(135deg, #C8B8A0, #B0A088); }
+        .menu-card-img.cake { background: linear-gradient(135deg, #E8C4A0, #D4A880); }
+
+        .menu-card-info {
+            flex: 1;
+        }
+
+        .menu-card-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--brown-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .menu-card-desc {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-card-price {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--golden-dark);
+        }
+
+        /* ===== REVIEWS ===== */
+        .reviews {
+            padding: 6rem 2rem;
+            background: var(--cream);
+        }
+
+        .reviews-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .reviews-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--brown-dark);
+            margin-bottom: 1rem;
+        }
+
+        .reviews-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .reviews-summary {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .reviews-score {
+            text-align: center;
+        }
+
+        .reviews-score-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--brown-dark);
+            line-height: 1;
+        }
+
+        .reviews-score-stars {
+            display: flex;
+            gap: 2px;
+            justify-content: center;
+            margin: 0.25rem 0;
+        }
+
+        .reviews-score-stars svg {
+            width: 16px;
+            height: 16px;
+            fill: #F5B731;
+        }
+
+        .reviews-score-count {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .reviews-divider {
+            width: 1px;
+            height: 60px;
+            background: var(--golden-light);
+        }
+
+        .reviews-bars {
+            flex: 1;
+        }
+
+        .review-bar-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .review-bar-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            width: 30px;
+        }
+
+        .review-bar-track {
+            flex: 1;
+            height: 6px;
+            background: var(--bg-section);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .review-bar-fill {
+            height: 100%;
+            background: var(--golden);
+            border-radius: 3px;
+        }
+
+        .reviews-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .review-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        .review-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .review-avatar.av1 { background: linear-gradient(135deg, #C8956C, #A07040); }
+        .review-avatar.av2 { background: linear-gradient(135deg, #7A8B6F, #5A6B4F); }
+        .review-avatar.av3 { background: linear-gradient(135deg, #D4A0A0, #B07878); }
+        .review-avatar.av4 { background: linear-gradient(135deg, #6B8BA4, #4A6B84); }
+        .review-avatar.av5 { background: linear-gradient(135deg, #8B7AB8, #6B5A98); }
+        .review-avatar.av6 { background: linear-gradient(135deg, #B8A87A, #98885A); }
+
+        .review-author {
+            flex: 1;
+        }
+
+        .review-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--brown-dark);
+        }
+
+        .review-level {
+            font-size: 0.7rem;
+            color: var(--text-light);
+        }
+
+        .review-date {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            white-space: nowrap;
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 0.75rem;
+        }
+
+        .review-stars svg {
+            width: 14px;
+            height: 14px;
+            fill: #F5B731;
+        }
+
+        .review-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .review-text .review-more {
+            color: var(--golden-dark);
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            padding: 4rem 2rem;
+            background: var(--bg-section);
+        }
+
+        .gallery-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .gallery-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--brown-dark);
+            margin-bottom: 1rem;
+        }
+
+        .gallery-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 200px);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:nth-child(1) { grid-column: span 2; background: linear-gradient(135deg, #E8C4A0, #C8956C); }
+        .gallery-item:nth-child(2) { background: linear-gradient(135deg, #A8B89E, #7A8B6F); }
+        .gallery-item:nth-child(3) { background: linear-gradient(135deg, #F0D0D0, #D4A0A0); }
+        .gallery-item:nth-child(4) { background: linear-gradient(135deg, #D4A0A0, #B07878); }
+        .gallery-item:nth-child(5) { background: linear-gradient(135deg, #8B7AB8, #6B5A98); }
+        .gallery-item:nth-child(6) { grid-column: span 2; background: linear-gradient(135deg, #F5DEB3, #DEB887); }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(58, 34, 16, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-overlay svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        .gallery-icon {
+            font-size: 3rem;
+            opacity: 0.6;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            padding: 6rem 2rem;
+            background: var(--cream);
+        }
+
+        .contact-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--brown-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--bg-section);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-item-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--golden-dark);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .contact-item-content {
+            flex: 1;
+        }
+
+        .contact-item-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item-value {
+            font-size: 1rem;
+            color: var(--brown-dark);
+            font-weight: 500;
+        }
+
+        .contact-item-value a {
+            color: var(--golden-dark);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-item-value a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-hours {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            margin-top: 1.5rem;
+        }
+
+        .contact-hours h4 {
+            font-size: 1.1rem;
+            color: var(--brown-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-hours h4 svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--golden);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--bg-section);
+            font-size: 0.9rem;
+        }
+
+        .hours-row:last-child {
+            border-bottom: none;
+        }
+
+        .hours-day {
+            color: var(--text-secondary);
+        }
+
+        .hours-time {
+            font-weight: 600;
+            color: var(--brown-dark);
+        }
+
+        .contact-map {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            height: 100%;
+            min-height: 400px;
+            background: var(--bg-section);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-map-header {
+            padding: 1.5rem;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .contact-map-header h4 {
+            font-size: 1rem;
+            color: var(--brown-dark);
+        }
+
+        .contact-map-header a {
+            font-size: 0.8rem;
+            color: var(--golden-dark);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .contact-map-body {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #E8E0D8, #D8D0C8);
+            position: relative;
+        }
+
+        .map-placeholder {
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .map-placeholder svg {
+            width: 60px;
+            height: 60px;
+            stroke: var(--text-light);
+            fill: none;
+            stroke-width: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .map-placeholder p {
+            font-size: 0.9rem;
+        }
+
+        .map-placeholder a {
+            color: var(--golden-dark);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ===== CTA ===== */
+        .cta {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown) 50%, var(--golden-dark) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20c5.523 0 10-4.477 10-10S25.523 0 20 0 10 4.477 10 10s4.477 10 10 10zm0 20c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10z' fill='%23FFFFFF' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .cta .btn-primary {
+            background: white;
+            color: var(--brown-dark);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta .btn-primary:hover {
+            background: var(--cream);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 3rem 2rem;
+            background: var(--brown-dark);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .footer-logo svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .footer-logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .footer-social {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .footer-social:hover {
+            background: var(--golden);
+            border-color: var(--golden);
+        }
+
+        .footer-social svg {
+            width: 16px;
+            height: 16px;
+            fill: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-social:hover svg {
+            fill: white;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== MOBILE MENU ===== */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 248, 240, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-menu.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-menu a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--brown-dark);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .reviews-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 8vw, 3.5rem);
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-images {
+                height: 300px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reviews-summary {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .reviews-divider {
+                width: 60px;
+                height: 1px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 150px);
+            }
+
+            .gallery-item:nth-child(1) { grid-column: span 2; }
+            .gallery-item:nth-child(6) { grid-column: span 2; }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-details {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(6, 180px);
+            }
+
+            .gallery-item:nth-child(1),
+            .gallery-item:nth-child(6) {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="18" fill="#C8956C" opacity="0.15"/>
+                    <path d="M12 22c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="#C8956C" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M15 18c0-2.761 2.239-5 5-5s5 2.239 5 5" stroke="#A07040" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M17 14c0-1.657 1.343-3 3-3s3 1.343 3 3" stroke="#C8956C" stroke-width="1.5" stroke-linecap="round"/>
+                    <circle cx="20" cy="22" r="2" fill="#C8956C"/>
+                    <path d="M10 26h20" stroke="#C8956C" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span class="nav-logo-text">Пташки</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#menu">Меню</a></li>
+                <li><a href="#reviews">Отзывы</a></li>
+                <li><a href="#gallery">Галерея</a></li>
+                <li><a href="#contact">Контакты</a></li>
+                <li>
+                    <a href="tel:+79632978871" class="nav-phone">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        Позвонить
+                    </a>
+                </li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about" onclick="closeMobileMenu()">О нас</a>
+        <a href="#menu" onclick="closeMobileMenu()">Меню</a>
+        <a href="#reviews" onclick="closeMobileMenu()">Отзывы</a>
+        <a href="#gallery" onclick="closeMobileMenu()">Галерея</a>
+        <a href="#contact" onclick="closeMobileMenu()">Контакты</a>
+        <a href="tel:+79632978871" style="color: #C8956C;">+7 (963) 297-88-71</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-decor hero-decor-1"></div>
+        <div class="hero-decor hero-decor-2"></div>
+        <div class="hero-decor hero-decor-3"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                Хорошее место 2026
+            </div>
+            <h1 class="hero-title">Булочки <span>ранней пташки</span></h1>
+            <p class="hero-subtitle">Кафе · Кондитерская · Пекарня</p>
+            <div class="hero-rating">
+                <div class="hero-rating-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <div class="hero-rating-text"><strong>5,0</strong> · 1 718 отзывов</div>
+            </div>
+            <div class="hero-actions">
+                <a href="tel:+79632978871" class="btn btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    Узнать про свободный столик
+                </a>
+                <a href="#menu" class="btn btn-secondary">Посмотреть меню</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Листайте вниз</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature-item animate-on-scroll">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Открыты с 7:30</h3>
+                <p class="feature-text">Одна из немногих кофеен в городе, которая открывает двери так рано. Идеально для раннего завтрака.</p>
+            </div>
+            <div class="feature-item animate-on-scroll" style="transition-delay: 0.1s;">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">С любовью к деталям</h3>
+                <p class="feature-text">Фирменная посуда Villeroy&Boch, уютный интерьер с живыми растениями и тёплая атмосфера.</p>
+            </div>
+            <div class="feature-item animate-on-scroll" style="transition-delay: 0.2s;">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                        <line x1="6" y1="1" x2="6" y2="4"/>
+                        <line x1="10" y1="1" x2="10" y2="4"/>
+                        <line x1="14" y1="1" x2="14" y2="4"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Свежая выпечка</h3>
+                <p class="feature-text">Каждое утро — свежий хлеб, круассаны, десерты и завтраки. Всё готовится с нуля из лучших ингредиентов.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-images animate-on-scroll">
+                <div class="about-img about-img-1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                        <line x1="6" y1="1" x2="6" y2="4"/>
+                        <line x1="10" y1="1" x2="10" y2="4"/>
+                        <line x1="14" y1="1" x2="14" y2="4"/>
+                    </svg>
+                </div>
+                <div class="about-img about-img-2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <div class="about-badge-float">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <div class="about-badge-float-text">
+                        <strong>5.0 / 5</strong>
+                        Рейтинг 1718 отзывов
+                    </div>
+                </div>
+            </div>
+            <div class="about-text-block animate-on-scroll" style="transition-delay: 0.2s;">
+                <div class="section-label">О нашем месте</div>
+                <h2 class="about-title">Место, которое<br>забирает сердечко</h2>
+                <p class="about-text">
+                    «Булочки ранней пташки» — это уютное кафе, кондитерская и пекарня в самом сердце Калининграда. Мы открываемся с 7:30 утра, чтобы вы могли начать свой день с вкусного завтрака и ароматного кофе.
+                </p>
+                <p class="about-text">
+                    Наш интерьер наполнен зеленью и светом, а фирменная посуда Villeroy&Boch делает каждое блюдо произведением искусства. Мы готовим всё с любовью — от свежего хлеба до изысканных десертов.
+                </p>
+                <div class="about-details">
+                    <div class="about-detail">
+                        <div class="about-detail-icon">
+                            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div class="about-detail-text">
+                            <strong>Адрес</strong>
+                            <span>Красная ул., 63А, Калининград</span>
+                        </div>
+                    </div>
+                    <div class="about-detail">
+                        <div class="about-detail-icon">
+                            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <div class="about-detail-text">
+                            <strong>Время работы</strong>
+                            <span>Ежедневно с 7:30</span>
+                        </div>
+                    </div>
+                    <div class="about-detail">
+                        <div class="about-detail-icon">
+                            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
+                        <div class="about-detail-text">
+                            <strong>Телефон</strong>
+                            <span>+7 (963) 297-88-71</span>
+                        </div>
+                    </div>
+                    <div class="about-detail">
+                        <div class="about-detail-icon">
+                            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                        </div>
+                        <div class="about-detail-text">
+                            <strong>Бронирование</strong>
+                            <span>По звонку за 20 мин</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="menu" id="menu">
+        <div class="menu-header animate-on-scroll">
+            <div class="section-label">Наше меню</div>
+            <h2 class="menu-title">Вкус, который вдохновляет</h2>
+            <p class="menu-subtitle">Свежая выпечка каждое утро, изысканные завтраки и авторские десерты</p>
+        </div>
+
+        <div class="menu-categories animate-on-scroll">
+            <button class="menu-cat-btn active" onclick="filterMenu('all')">Всё</button>
+            <button class="menu-cat-btn" onclick="filterMenu('breakfast')">Завтраки</button>
+            <button class="menu-cat-btn" onclick="filterMenu('pastry')">Выпечка</button>
+            <button class="menu-cat-btn" onclick="filterMenu('dessert')">Десерты</button>
+            <button class="menu-cat-btn" onclick="filterMenu('drinks')">Напитки</button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid">
+            <div class="menu-card animate-on-scroll" data-category="breakfast">
+                <div class="menu-card-img breakfast">🍳</div>
+                <div class="menu-card-info">
+                    <div class="menu-card-name">Завтрак на двоих</div>
+                    <div class="menu-card-desc">Сытный завтрак с омлетом, круассаном и напитками</div>
+                    <div class="menu-card-price">от 890 ₽</div>
+                </div>
+            </div>
+            <div class="menu-card animate-on-scroll" data-category="pastry">
+                <div class="menu-card-img croissant">🥐</div>
+                <div class="menu-card-info">
+                    <div class="menu-card-name">Круассан с рыбой и авокадо</div>
+                    <div class="menu-card-desc">Хрустящий круассан с лососем и спелым авокадо</div>
+                    <div class="menu-card-price">450 ₽</div>
+                </div>
+            </div>
+            <div class="menu-card animate-on-scroll" data-category="dessert">
+                <div class="menu-card-img dessert">🍰</div>
+                <div class="menu-card-info">
+                    <div class="menu-card-name">Десерт «Анна Павлова»</div>
+                    <div class="menu-card-desc">Воздушное безе с кремом и свежими ягодами</div>
+                    <div class="menu-card-price">380 ₽</div>
+                </div>
+            </div>
+            <div class="menu-card animate-on-scroll" data-category="drinks">
+                <div class="menu-card-img coffee">☕</div>
+                <div class="menu-card-info">
+                    <div class="menu-card-name">Фильтр-кофе</div>
+                    <div class="menu-card-desc">Свежесваренный фильтр из отборных зёрен</div>
+                    <div class="menu-card-price">от 220 ₽</div>
+                </div>
+            </div>
+            <div class="menu-card animate-on-scroll" data-category="breakfast">
+                <div class="menu-card-img bread">🥣</div>
+                <div class="menu-card-info">
+                    <div class="menu-card-name">Каша несладкая</div>
+                    <div class="menu-card-desc">Полезная каша на выбор — без добавленного сахара</div>
+                    <div class="menu-card-price">от 290 ₽</div>
+                </div>
+            </div>
+            <div class="menu-card animate-on-scroll" data-category="drinks">
+                <div class="menu-card-img coffee">🥛</div>
+                <div class="menu-card-info">
+                    <div class="menu-card-name">Раф-кофе</div>
+                    <div class="menu-card-desc">Нежный раф с ванилью или другими вкусами</div>
+                    <div class="menu-card-price">от 320 ₽</div>
+                </div>
+            </div>
+            <div class="menu-card animate-on-scroll" data-category="pastry">
+                <div class="menu-card-img bread">🍞</div>
+                <div class="menu-card-info">
+                    <div class="menu-card-name">Авторский хлеб</div>
+                    <div class="menu-card-desc">Свежий хлеб собственной выпечки каждый день</div>
+                    <div class="menu-card-price">от 180 ₽</div>
+                </div>
+            </div>
+            <div class="menu-card animate-on-scroll" data-category="drinks">
+                <div class="menu-card-img tea">🍵</div>
+                <div class="menu-card-info">
+                    <div class="menu-card-name">Коллекция чая</div>
+                    <div class="menu-card-desc">Большой выбор классного чая на любой вкус</div>
+                    <div class="menu-card-price">от 190 ₽</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews" id="reviews">
+        <div class="reviews-header animate-on-scroll">
+            <div class="section-label">Отзывы гостей</div>
+            <h2 class="reviews-title">Что говорят наши гости</h2>
+            <p class="reviews-subtitle">Более 1700 отзывов с рейтингом 5,0 — нам доверяют</p>
+        </div>
+
+        <div class="reviews-summary animate-on-scroll">
+            <div class="reviews-score">
+                <div class="reviews-score-num">5,0</div>
+                <div class="reviews-score-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <div class="reviews-score-count">1 718 отзывов</div>
+            </div>
+            <div class="reviews-divider"></div>
+            <div class="reviews-bars">
+                <div class="review-bar-row">
+                    <span class="review-bar-label">5 ★</span>
+                    <div class="review-bar-track"><div class="review-bar-fill" style="width: 92%"></div></div>
+                </div>
+                <div class="review-bar-row">
+                    <span class="review-bar-label">4 ★</span>
+                    <div class="review-bar-track"><div class="review-bar-fill" style="width: 6%"></div></div>
+                </div>
+                <div class="review-bar-row">
+                    <span class="review-bar-label">3 ★</span>
+                    <div class="review-bar-track"><div class="review-bar-fill" style="width: 1.5%"></div></div>
+                </div>
+                <div class="review-bar-row">
+                    <span class="review-bar-label">2 ★</span>
+                    <div class="review-bar-track"><div class="review-bar-fill" style="width: 0.5%"></div></div>
+                </div>
+                <div class="review-bar-row">
+                    <span class="review-bar-label">1 ★</span>
+                    <div class="review-bar-track"><div class="review-bar-fill" style="width: 0%"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reviews-grid">
+            <div class="review-card animate-on-scroll">
+                <div class="review-header">
+                    <div class="review-avatar av1">В</div>
+                    <div class="review-author">
+                        <div class="review-name">Виктория</div>
+                        <div class="review-level">Знаток города 6 уровня</div>
+                    </div>
+                    <div class="review-date">15 мая</div>
+                </div>
+                <div class="review-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="review-text">Превосходное заведение!!! 10/5. Мы остались в полном восторге от этих завтраков. Приятно удивили цены, качество… <span class="review-more" onclick="toggleReview(this)">Ещё</span></p>
+            </div>
+
+            <div class="review-card animate-on-scroll" style="transition-delay: 0.1s;">
+                <div class="review-header">
+                    <div class="review-avatar av2">И</div>
+                    <div class="review-author">
+                        <div class="review-name">Илья Власенко</div>
+                        <div class="review-level">Дегустатор 6 уровня</div>
+                    </div>
+                    <div class="review-date">13 дек 2025</div>
+                </div>
+                <div class="review-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="review-text">Место точно стоит своих рекомендаций. И видимо не только мы так думаем — в 9:30 тут полная посадка. Девушки на входе быстро встретили… <span class="review-more" onclick="toggleReview(this)">Ещё</span></p>
+            </div>
+
+            <div class="review-card animate-on-scroll" style="transition-delay: 0.2s;">
+                <div class="review-header">
+                    <div class="review-avatar av3">Д</div>
+                    <div class="review-author">
+                        <div class="review-name">Диана</div>
+                        <div class="review-level">Дегустатор 6 уровня</div>
+                    </div>
+                    <div class="review-date">13 мая</div>
+                </div>
+                <div class="review-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="review-text">Кажется, это лучшее заведение в Калининграде, которое мы посетили за неделю своего пребывания. Я довольна абсолютно всем… <span class="review-more" onclick="toggleReview(this)">Ещё</span></p>
+            </div>
+
+            <div class="review-card animate-on-scroll" style="transition-delay: 0.1s;">
+                <div class="review-header">
+                    <div class="review-avatar av4">А</div>
+                    <div class="review-author">
+                        <div class="review-name">Аделина Амирзянова</div>
+                        <div class="review-level">Дегустатор 4 уровня</div>
+                    </div>
+                    <div class="review-date">2 фев</div>
+                </div>
+                <div class="review-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="review-text">Я люблю это место всей душой! Думаю, когда я буду на небесах, в качестве райского подарка мне будут подавать блюда из Пташек… <span class="review-more" onclick="toggleReview(this)">Ещё</span></p>
+            </div>
+
+            <div class="review-card animate-on-scroll" style="transition-delay: 0.2s;">
+                <div class="review-header">
+                    <div class="review-avatar av5">Ю</div>
+                    <div class="review-author">
+                        <div class="review-name">Юлия Шевченко</div>
+                        <div class="review-level">Знаток города 6 уровня</div>
+                    </div>
+                    <div class="review-date">17 апр</div>
+                </div>
+                <div class="review-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="review-text">Одна из лучших кофеен в районе. Удобно, что открывается с 8:30. Вкусный фильтр кофе, большой выбор круассанов и сытной выпечки… <span class="review-more" onclick="toggleReview(this)">Ещё</span></p>
+            </div>
+
+            <div class="review-card animate-on-scroll" style="transition-delay: 0.3s;">
+                <div class="review-header">
+                    <div class="review-avatar av6">С</div>
+                    <div class="review-author">
+                        <div class="review-name">Софья Трифонова</div>
+                        <div class="review-level">Знаток города 5 уровня</div>
+                    </div>
+                    <div class="review-date">19 окт 2025</div>
+                </div>
+                <div class="review-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="review-text">Ну я оооочень люблю это место! И просто молюсь всем богам, чтоб оно оставалось на том же уровне ну или только лучше. Интерьер… <span class="review-more" onclick="toggleReview(this)">Ещё</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery">
+        <div class="gallery-header animate-on-scroll">
+            <div class="section-label">Галерея</div>
+            <h2 class="gallery-title">Атмосфера нашего места</h2>
+        </div>
+        <div class="gallery-grid animate-on-scroll">
+            <div class="gallery-item">
+                <span class="gallery-icon">🥐</span>
+                <div class="gallery-overlay">
+                    <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <span class="gallery-icon">☕</span>
+                <div class="gallery-overlay">
+                    <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <span class="gallery-icon">🌿</span>
+                <div class="gallery-overlay">
+                    <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <span class="gallery-icon">🍰</span>
+                <div class="gallery-overlay">
+                    <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <span class="gallery-icon">🍳</span>
+                <div class="gallery-overlay">
+                    <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <span class="gallery-icon">🍞</span>
+                <div class="gallery-overlay">
+                    <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-info animate-on-scroll">
+                <div class="section-label">Контакты</div>
+                <h2>Приходите к нам<br>на завтрак</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">
+                    Мы всегда рады видеть вас в нашем уютном кафе. Позвоните заранее, чтобы мы могли придержать для вас столик.
+                </p>
+
+                <div class="contact-item">
+                    <div class="contact-item-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <div class="contact-item-content">
+                        <div class="contact-item-label">Адрес</div>
+                        <div class="contact-item-value">Красная ул., 63А, Калининград</div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-item-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-item-content">
+                        <div class="contact-item-label">Телефон</div>
+                        <div class="contact-item-value"><a href="tel:+79632978871">+7 (963) 297-88-71</a></div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-item-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <div class="contact-item-content">
+                        <div class="contact-item-label">Время работы</div>
+                        <div class="contact-item-value">Ежедневно с 7:30</div>
+                    </div>
+                </div>
+
+                <div class="contact-hours">
+                    <h4>
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        Режим работы
+                    </h4>
+                    <div class="hours-row">
+                        <span class="hours-day">Понедельник — Пятница</span>
+                        <span class="hours-time">7:30 — 21:00</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="hours-day">Суббота</span>
+                        <span class="hours-time">8:00 — 21:00</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="hours-day">Воскресенье</span>
+                        <span class="hours-time">8:00 — 21:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-map animate-on-scroll" style="transition-delay: 0.2s;">
+                <div class="contact-map-header">
+                    <h4>📍 Как нас найти</h4>
+                    <a href="https://yandex.ru/maps/?text=Красная+ул+63А+Калининград" target="_blank">
+                        Построить маршрут
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="contact-map-body">
+                    <div class="map-placeholder">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <p>Красная ул., 63А<br>Калининград</p>
+                        <br>
+                        <a href="https://yandex.ru/maps/?text=Красная+ул+63А+Калининград" target="_blank">Открыть на карте →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-pattern"></div>
+        <div class="cta-content animate-on-scroll">
+            <h2>Начните утро правильно</h2>
+            <p>Приходите на завтрак в «Булочки ранней пташки» — мы открываемся с 7:30 и ждём вас с ароматным кофе и свежей выпечкой.</p>
+            <a href="tel:+79632978871" class="btn btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                Позвонить: +7 (963) 297-88-71
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <svg viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="18" fill="rgba(255,255,255,0.1)"/>
+                    <path d="M12 22c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M15 18c0-2.761 2.239-5 5-5s5 2.239 5 5" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+                    <circle cx="20" cy="22" r="2" fill="rgba(255,255,255,0.5)"/>
+                    <path d="M10 26h20" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span class="footer-logo-text">Булочки ранней пташки</span>
+            </div>
+            <div class="footer-copy">© 2026 Булочки ранней пташки. Все права защищены.</div>
+            <div class="footer-socials">
+                <div class="footer-social">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </div>
+                <div class="footer-social">
+                    <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46 6.29 6.29 0 001.88-4.48V8.75a8.26 8.26 0 004.84 1.56V6.86a4.84 4.84 0 01-1.14-.17z"/></svg>
+                </div>
+                <div class="footer-social">
+                    <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            lastScroll = currentScroll;
+        });
+
+        // Mobile menu
+        const navToggle = document.getElementById('navToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+
+        function closeMobileMenu() {
+            navToggle.classList.remove('active');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // Menu filter
+        function filterMenu(category) {
+            const cards = document.querySelectorAll('.menu-card');
+            const buttons = document.querySelectorAll('.menu-cat-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(10px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Review expand
+        function toggleReview(el) {
+            const text = el.parentElement;
+            if (el.textContent === 'Ещё') {
+                el.textContent = 'Свернуть';
+                // In a real app, this would expand the full review text
+            } else {
+                el.textContent = 'Ещё';
+            }
+        }
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
